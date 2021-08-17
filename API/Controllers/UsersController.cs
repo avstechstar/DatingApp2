@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    // no longer need the following since we had the BaseapiController to inheritant from -DRY
     // // [ApiController]
     // [Route("api/[controller]")]
     public class UsersController : BaseApiController
