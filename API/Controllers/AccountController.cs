@@ -58,13 +58,20 @@ namespace API.Controllers
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+#region 
+            // byte[] salt = new byte[1];
+            // salt[0] = 0x0;
+            // using var hmac = new HMACSHA256(salt);
+            // var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+            // return Unauthorized(computedHash);
+#endregion   
             for (int i = 0; i < computedHash.Length; i++)
             {
                 if (computedHash[i] != user.PasswordHash[i])
                     return Unauthorized("Ivalid passwor!");
             }
 
-             return new UserDto
+            return new UserDto
             {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user)
