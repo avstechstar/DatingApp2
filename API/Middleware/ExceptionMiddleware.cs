@@ -39,8 +39,8 @@ namespace API.Middleware
                     ? new ApiException(context.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())
                     : new ApiException(context.Response.StatusCode, "Internal server Error Okkk"); // production env
 
-                var optiions = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
-                var json = JsonSerializer.Serialize(response, optiions);
+                var options = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
+                var json = JsonSerializer.Serialize(response, options);
                 await context.Response.WriteAsync(json);
                 
              }
