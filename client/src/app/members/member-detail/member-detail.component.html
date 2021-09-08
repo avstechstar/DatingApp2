@@ -3,6 +3,7 @@
 <div class="row" *ngIf="member">
     <div class="col-4">
         <div class="card">
+            <p>member-detil.component.html</p>
             <img src="{{member.photoUrl || '.assets/user.png'}}" alt="{{member.knownAs}}"
                 class="card-img-top img-thumbnail">
             <div class="card-body">
@@ -11,7 +12,7 @@
                     <p>{{member.city}}, {{member.country}}</p>
                 </div>
                 <div>
-                    <strong>Age:</strong>
+                    <strong>Number of Videos</strong>
                     <p>{{member.age}}</p>
                 </div>
                 <div>
@@ -37,7 +38,7 @@
             <tab heading='About {{member.knownAs}}'>
                 <h4>Description</h4>
                 <p>{{member.introduction}}</p>
-                <h4>Looking for</h4>
+                <h4>Searching</h4>
                 <p>{{member.lookingFor}}</p>
             </tab>
 
