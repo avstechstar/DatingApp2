@@ -8,7 +8,14 @@ namespace API.Extensions
         {   
             // this User is from BaseApiController : ControllerBase
             // this gives the user name of current editing usr
-           return user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+           
+           //return user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+           return user.FindFirst(ClaimTypes.Name)?.Value;
+        }
+    
+        public static int  GetUserId(this ClaimsPrincipal user)
+        {
+           return int.Parse(user.FindFirst(ClaimTypes.NameIdentifier)?.Value);
         }
 
        // public static
