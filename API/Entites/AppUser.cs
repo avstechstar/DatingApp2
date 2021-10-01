@@ -22,10 +22,17 @@ namespace API.Entites
         public string City { get; set; }
         public string  Country { get; set; }
         public ICollection<Photo> Photos { get; set; }
-        public int GetAge() //important to have Get in front Age for a convention of naming
-        {
-            return DateOfBirth.CalculateAge();// DateOfBirth;
-        }
+
+        public ICollection<UserLike>LikedByUsers{ get; set; } // a is like by B
+        public ICollection<UserLike>LikedUsers{ get; set; } // A liked B
+
+        public ICollection<Message> MessageSent { get; set; }
+        public ICollection<Message> MessageReceived { get; set; }
+        
+        // public int GetAge() //important to have Get in front Age for a convention of naming
+        // {
+        //     return DateOfBirth.CalculateAge();// DateOfBirth;
+        // }
 
     }
 }

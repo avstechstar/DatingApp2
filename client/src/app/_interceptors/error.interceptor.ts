@@ -30,8 +30,10 @@ export class ErrorInterceptor implements HttpInterceptor {
                   }
                 }
                 throw modalStateErrors.flat(); // err msg on the console is flat, concatnated strings
+              } else if (typeof(error.error) ==='object'){
+                this.toastr.error(error.statusText, error.status) // statusText =  OK, status = 400
               } else{
-                this.toastr.error(error.statusText, error.status)
+                this.toastr.error(error.error, error.status ); //object error.error = you already liked this user.  status = 400, 
               }
               break;
             

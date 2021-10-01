@@ -48,9 +48,10 @@ namespace API.Controllers
         }
 
         [HttpGet("bad-request")]
+        //400
         public ActionResult<string> GetBadResuest()
         {
-            return BadRequest("this was not a good requet");
+            return BadRequest();
         }
 
     }
