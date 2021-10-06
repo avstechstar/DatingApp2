@@ -41,6 +41,9 @@ export class AccountService {
   }
    
   setCurrentUser(user: User){
+    user.roles = [];
+    const roles = this.getDecodedToken(user.token).role;
+    Array.isArray(roles) ? user.roles = roles : user.roles.push(roles); // if is single value, push to the array as one element
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
 }
@@ -50,5 +53,9 @@ export class AccountService {
     this.currentUserSource.next(undefined );
   }
   
+  // token is not encrypted, it is clear text, only the signature is encrypted
+  getDecodedToken(token){ // 3 parts in the token, we want to get the middle part,i.e. payload
+    return JSON.parse(atob(token.split('.')[1]))
+  }
 
 }

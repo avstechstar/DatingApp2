@@ -78,8 +78,8 @@ namespace API
             app.UseRouting();
 
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200")); 
-
-            app.UseAuthentication(); // Middleware, order is important here
+            
+            app.UseAuthentication(); // Middleware, order is important here, this is used in conjunction with  AddIdentityServices(_config) to validate a client calls to the api server;
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
